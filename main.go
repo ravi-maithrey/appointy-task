@@ -11,14 +11,25 @@ import (
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
+var client *mongo.Client
+
 type instagram struct {
-	user     string
+	User     user
 	password string
 	post     string
 }
+type user struct {
+	userid    int    `json:"userid"`
+	username  string `json:"username"`
+	useremail string `json:useremail"`
+}
 
 func createUser() {
-
+	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
+	err = client.Connect(ctx)
+	if err != nil {
+		log.Fatal(err)
+	}
 }
 
 func getUser(w http.ResponseWriter, r *http.Request) {
@@ -35,10 +46,6 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
-	err = client.Connect(ctx)
-	if err != nil {
-		log.Fatal(err)
-	}
+
 	defer client.Disconnect(ctx)
 }
