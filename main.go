@@ -1,17 +1,29 @@
-package main
+package appointytask
 
 import (
 	"context" // to take care of tieouts and other signals
 	"log"     //to log errors
-	"time"    //to have a timeout measure
+	"net/http"
+	"time" //to have a timeout measure
 
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
-func createUser()
+type instagram struct {
+	user     string
+	password string
+	post     string
+}
 
+func createUser() {
+
+}
 func main() {
+
+	mux = http.NewServeMux() //to handle routing
+
+	mux.HandleFunc("/users", createUser)
 	client, err := mongo.NewClient(options.Client().ApplyURI("mongodb+srv://ravi:<password>@cluster0.bwqsb.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"))
 	if err != nil {
 		log.Fatal(err)
