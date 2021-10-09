@@ -30,7 +30,7 @@ type user struct {
 func createUser(w http.ResponseWriter, r *http.Request) {
 	details := &user{}
 	_ = json.NewDecoder(r.Body).Decode(details)
-
+	//hashing to store passwords
 	hashedPassword, err := bcrypt.GenerateFromPassword([]byte(details.password), 8)
 
 	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
@@ -54,10 +54,17 @@ func createUser(w http.ResponseWriter, r *http.Request) {
 
 func getUser(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("content-type", "application/json")
-	details := &user.userid
+	var details int
 	_ = json.NewDecoder(r.Body).Decode(details)
 	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
-
+	err := client.Connect(ctx)
+	if err != nil {
+		log.Fatal(err)
+	}
+	usersDatabase := client.Database("user")
+	usersDetails := usersDatabase.Collection("user")
+	userResult, err := usersDetails.Find(ctx, bson.M{"userid": details})
+	json.NewEncoder(w).Encode(userResult)
 }
 func main() {
 
