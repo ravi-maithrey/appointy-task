@@ -1,3 +1,3 @@
-# appointy-task
+# instragram-api
 
-Contains the submission of the task asked
+work on a sample intstagram sample api written in golang
