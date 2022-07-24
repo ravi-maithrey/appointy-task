@@ -48,3 +48,8 @@ fibonacci n = fibonacci (n-2) + fibonacci (n-1)
 -- multiplication using addition
 mult a 1 = a
 mult a b = a + mult a (b-1)
+
+-- writing a my_map using recursion
+my_map func [] = [] -- base case
+my_map func (x:xs) = 
+    (func x) : my_map func xs
