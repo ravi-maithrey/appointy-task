@@ -1,10 +1,6 @@
 module Main where
 
--- import IO
-
--- import IO
-import Data.ByteString ()
-import System.IO (BufferMode (LineBuffering), hSetBuffering, stdin)
+import System.IO
 
 main = do
   hSetBuffering stdin LineBuffering
