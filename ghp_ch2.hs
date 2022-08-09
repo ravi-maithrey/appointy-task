@@ -4,3 +4,7 @@ calcChange owed given =
     else 0
   where
     change = owed - given
+
+doublePlusTwo x = doubleX + 2
+  where
+    doubleX = x + x
