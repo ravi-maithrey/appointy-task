@@ -40,3 +40,14 @@ secondSumSquareOrSquareSum x y =
   )
     (x ^ 2 + y ^ 2)
     ((x + y) ^ 2)
+    
+counter x = 
+  let x = x+1
+  in
+    let x = x+1
+    in
+      x
+
+(\x -> 
+  (\x -> 
+    (\x -> x)))
