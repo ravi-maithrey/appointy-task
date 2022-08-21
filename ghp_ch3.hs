@@ -14,7 +14,7 @@ ifEvenSquare n = if even n
 ifEven myFunction n = if even n
     then myFunction n
     else n
-
+-- we use the below functions in place of the myFunction above
 inc n = n + 1
 double n = n * 2
 square n = n ^ 2
