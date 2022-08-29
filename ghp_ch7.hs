@@ -12,7 +12,7 @@ greatestCommonDivisor a b = if a `rem` b == 0
 myreverse []     = []
 myreverse (x:xs) = myreverse xs ++ [x]
 -- writing the elem function
--- myElem a (x:xs) = filter (a == x) (x:xs)
+myElem a (x:xs) = length (filter (== a) (x:xs)) /= 0
 
 {-- Your isPalindrome function from lesson 6 doesn’t handle sentences with spaces or
 capitals. Use map and filter to make sure the phrase “A man a plan a canal Panama”
